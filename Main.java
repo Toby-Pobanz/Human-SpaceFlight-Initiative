@@ -1,19 +1,27 @@
 import java.io.File;
 import java.sql.DriverManager;
+import java.util.*;
 
-//import java.io.*;
+import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
     
     String password = "";
     String username = "Admin";
-    Final String DB_URL = "jdbc:derby:AstroDB";
+    String DB_URL = "jdbc:derby:AstroDB";
+    
 
-    if("Password.dat" == false) {
-        password = new Random().ints(10, 33, 122).mapToObj(i -> String.valueOf((char)i)).collect(Collectors.joining());
+
+    if(new File("password.dat").exists()) {
+
+    }
+    else {
+        password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
+        StringBuilder::appendCodePoint, StringBuilder::append)
+        .toString();
         System.out.println(password);
-        File f = new File ("password.dat");
+        File F = new File ("password.dat");
         OutputStream output = new FileOutputStream("password.dat");
         output.writeUTF(password);
     }
