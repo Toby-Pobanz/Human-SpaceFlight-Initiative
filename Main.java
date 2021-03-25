@@ -48,8 +48,10 @@ public static void main(String[] args) {
         //output.writeUTF(password);
         //output.writeBytes(password);
         //output.write(bytes);
-        fstream.write(bytes);
+        //fstream.write(bytes);
+        Files.write(Paths.get("password.dat"), bytes);
         System.out.println("bytes: " + bytes);
+
         output.close();
     }
     }
