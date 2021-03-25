@@ -1,13 +1,13 @@
 
 import java.sql.*;
 import java.util.*;
-import java.nio.file; 
+//import java.nio.file; 
 import java.io.*;
 
 public class Main {
 
     
-    public static void main(String[] args, File file) {
+public static void main(String[] args) { 
     
     String password = "";
     String username = "Admin";
@@ -15,7 +15,7 @@ public class Main {
     
     File f = new File("password.dat"); 
     try {
-    if(!f.isFile()) {
+    if(!f.exists()) {
         System.out.println("file is true");
 
         password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
