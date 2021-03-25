@@ -1,7 +1,9 @@
 
 import java.sql.*;
 import java.util.*;
-//import java.nio.file; 
+import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.io.*;
 
 public class Main {
@@ -14,8 +16,11 @@ public static void main(String[] args) {
     String DB_URL = "jdbc:derby:AstroDB";
     
     File f = new File("password.dat"); 
+
+    Path path = Paths.get("password.dat"); 
+
     try {
-    if(!f.exists()) {
+    if(Files.notExists(path)) {
         System.out.println("file is true");
 
         password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
