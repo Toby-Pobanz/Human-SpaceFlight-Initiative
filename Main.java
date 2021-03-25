@@ -1,6 +1,7 @@
 
 import java.sql.*;
 import java.util.*;
+import java.nio.charset.Charset;
 import java.nio.file.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,15 +16,15 @@ public static void main(String[] args) {
     String username = "Admin";
     String DB_URL = "jdbc:derby:AstroDB";
     
-    File f = new File("password.dat"); 
+    //File f = new File("password.dat"); 
 
     Path path = Paths.get("password.dat"); 
 
     try {
-    if(Files.notExists(path)) {
+    if(Files.exists(path)) {
         System.out.println("file is true");
 
-        password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
+        /* password = new Random().ints(10, 33, 122).collect(StringBuilder::new,
         StringBuilder::appendCodePoint, StringBuilder::append)
         .toString();
         System.out.println(password);
@@ -31,7 +32,7 @@ public static void main(String[] args) {
         FileOutputStream fstream = new FileOutputStream(F);
         DataOutputStream output = new DataOutputStream(fstream);
         output.writeUTF(password);
-        output.close();
+        output.close(); */ 
 
         
     }
@@ -40,10 +41,15 @@ public static void main(String[] args) {
         StringBuilder::appendCodePoint, StringBuilder::append)
         .toString();
         System.out.println(password);
+        byte[] bytes = password.getBytes(Charset.forName("UTF-8"));
         File F = new File ("password.dat");
         FileOutputStream fstream = new FileOutputStream(F);
         DataOutputStream output = new DataOutputStream(fstream);
-        output.writeUTF(password);
+        //output.writeUTF(password);
+        //output.writeBytes(password);
+        //output.write(bytes);
+        fstream.write(bytes);
+        System.out.println("bytes: " + bytes);
         output.close();
     }
     }
