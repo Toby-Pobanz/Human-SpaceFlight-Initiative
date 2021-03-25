@@ -51,7 +51,9 @@ public static void main(String[] args) {
         System.out.println("it went wrong");
         System.out.print(e);
     }
-    //Connection conn = DriverManager.getConnection(DB_URL, username, password);
+    
+    //Connection conn = null;
+    //conn = DriverManager.getConnection(DB_URL, username, password);
     System.out.println("The end");
     System.out.println("password: " + password);
     }
