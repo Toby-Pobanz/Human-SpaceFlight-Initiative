@@ -1,6 +1,9 @@
 
 import java.sql.*;
 import java.util.*;
+
+//import com.mysql.cj.x.protobuf.MysqlxPrepare.Execute;
+
 import java.nio.charset.Charset;
 import java.nio.file.*;
 import java.nio.file.Files;
@@ -8,13 +11,11 @@ import java.nio.file.Path;
 import java.io.*;
 
 public class Main {
-
     
-public static void main(String[] args) { 
-    
+public static void main(String[] args) throws SQLException { 
     String password = "";
     String username = "Admin";
-    String DB_URL = "jdbc:derby:AstroDB";
+    String DB_URL = "jdbc:mysql://localhost:3306/astrodb";
     
     //File f = new File("password.dat"); 
 
@@ -52,10 +53,15 @@ public static void main(String[] args) {
         System.out.print(e);
     }
     
-    //Connection conn = null;
-    //conn = DriverManager.getConnection(DB_URL, username, password);
+    Connection conn = null;
+    //C:\Users\000191368\Desktop\Human SpaceFlight Initiative\myDatabase\mysql\data\astrodb
+    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/astrodb", "root", "Tobias2004");
     System.out.println("The end");
     System.out.println("password: " + password);
+    String sqlStatement = "SELECT * FROM Astro";
+    Statement stmt = conn.createStatement();
+    ResultSet result = stmt.executeQuery(sqlStatement);
+    System.out.println(result);
     }
 
 }
