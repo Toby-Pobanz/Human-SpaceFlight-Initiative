@@ -12,7 +12,7 @@ import java.io.*;
 
 public class Main {
     
-public static void main(String[] args) throws SQLException { 
+public static void main(String[] args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException { 
     String password = "";
     String username = "Admin";
     String DB_URL = "jdbc:mysql://localhost:3306/astrodb";
@@ -52,7 +52,7 @@ public static void main(String[] args) throws SQLException {
         System.out.println("it went wrong");
         System.out.print(e);
     }
-    
+    Class.forName("com.mysql.jdbc.Driver").newInstance();
     Connection conn = null;
     //C:\Users\000191368\Desktop\Human SpaceFlight Initiative\myDatabase\mysql\data\astrodb
     conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/astrodb", "root", "Tobias2004");
