@@ -13,5 +13,10 @@
         "exclude": [
             "c:\\Users\\000191368\\Desktop\\Human SpaceFlight Initiative\\javafx-sdk-11.0.2\\lib\\javafx-swt.jar"
         ]
-    }
+    },
+    "java.project.sourcePaths": [
+        ""
+    ],
+    
+    
 }
